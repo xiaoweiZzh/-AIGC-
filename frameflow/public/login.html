@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 · FrameFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/login.css">
+  <script type="module" src="/login.js"></script>
+</head>
+<body>
+  <main>
+    <p class="brand">FRAMEFLOW</p>
+    <h1>登录视频工作台</h1>
+    <p>使用站长发给你的账号和专属访问码。每个人的分镜、素材和百炼配置独立保存。</p>
+    <form action="/login" method="post">
+      <label>账号<input name="username" autocomplete="username" required maxlength="32" pattern="[A-Za-z0-9][A-Za-z0-9_\-]{1,31}" spellcheck="false"></label>
+      <label>专属访问码<input name="code" type="password" autocomplete="current-password" required maxlength="43" spellcheck="false"></label>
+      <p id="loginError" role="alert" hidden>账号或访问码不正确，请向站长确认。</p>
+      <button type="submit">进入工作台</button>
+    </form>
+  </main>
+</body>
+</html>

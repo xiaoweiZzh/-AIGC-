@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171815">
+  <title>FrameFlow · AI 视频工作台</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/studio.css">
+  <link rel="stylesheet" href="/editor.css">
+  <script type="module" src="/studio.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-logo" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 9h16M9 4l4 5m1-5 4 5M9 13l6 3-6 3z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/></symbol>
+    <symbol id="i-queue" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10 3h4l.5 2.4 2 .9 2.1-1.2 2.8 2.8-1.2 2.1.9 2L23 12v4l-2.4.5-.9 2 .2.3M10 3l-.5 2.4-2 .9-2.1-1.2-2.8 2.8L3.8 10l-.9 2L1 12v4l2.4.5.9 2-1.2 2.1 2.8 2.8L8 22.2" transform="translate(2 0) scale(.83)"/><circle cx="12" cy="12" r="3.2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-caret" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 5V4H4v12h1"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5c.9 5.9 3.6 8.6 9.5 9.5-5.9.9-8.6 3.6-9.5 9.5-.9-5.9-3.6-8.6-9.5-9.5 5.9-.9 8.6-3.6 9.5-9.5zM20 2v4m-2-2h4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 4v16M16.5 4v16M3 9h4.5M3 15h4.5m9-6H21m-4.5 6H21"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2.5-3 4m0 3h.01"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M5 21h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"/></symbol>
+    <symbol id="i-retry" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 6M4 5v6h6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs></svg>
+
+  <header class="top"><div class="breadcrumb"><span class="brandmark"><svg><use href="#i-logo"/></svg></span><strong class="wordmark">FrameFlow</strong><span class="slash">/</span><strong id="crumb">分镜工作台</strong></div><nav class="top-actions" aria-label="工作台导航"><button class="nav active" data-view="studio"><svg><use href="#i-grid"/></svg><span>分镜工作台</span></button><button class="nav" data-view="assets"><svg><use href="#i-image"/></svg><span>素材资产库</span></button><button class="nav" data-view="queue"><svg><use href="#i-queue"/></svg><span>生成队列</span><b id="navCount" class="nav-count">0</b></button><button class="status-btn" data-config><i id="topDot"></i><span id="configState">正在检查</span></button></nav></header>
+
+  <main class="workspace">
+    <section id="studioView" class="storyboard" inert>
+      <aside class="shot-rail" aria-label="剧本结构">
+        <div class="rail-head"><h2>剧本结构 <span id="shotCount"></span></h2><button class="text-action" id="addShot"><svg><use href="#i-plus"/></svg> 添加</button></div>
+        <div class="shot-list" id="shotList"></div>
+        <div class="rail-foot"><button class="outline" id="importShots"><svg><use href="#i-layers"/></svg> 批量导入分镜</button></div>
+      </aside>
+      <div class="story-main">
+        <div class="project-bar"><div><span>当前剧本</span><h1>我的分镜剧本</h1></div><div class="project-actions"><button class="outline mobile-assets" id="chooseAssets"><svg><use href="#i-image"/></svg> 素材</button><button class="outline" id="generateAll"><svg><use href="#i-layers"/></svg> 批量入队</button><button class="primary" id="generate"><svg><use href="#i-spark"/></svg><span>生成当前镜头</span></button></div></div>
+        <section class="model-box" aria-labelledby="modelTitle">
+          <div class="model-head"><h2 id="modelTitle">模型参数</h2><span class="core-badge">核心配置</span></div>
+          <div class="parameter-grid">
+            <div class="model-field"><span>模型</span><strong>万相 3.0</strong></div>
+            <label class="model-field"><span>时长</span><input id="duration" type="range" min="2" max="30" step="1" value="5" aria-label="视频时长"><output id="durationValue" for="duration">5 秒</output></label>
+            <div class="model-field"><span>分辨率</span><strong class="mono">480P</strong></div>
+            <label class="model-field"><span>比例</span><select aria-label="画面比例" id="ratio"><option>16:9</option><option>9:16</option><option>1:1</option><option>4:3</option><option>3:4</option><option>21:9</option><option value="adaptive">自适应</option></select></label>
+          </div>
+        </section>
+
+        <div class="editing-area">
+          <section class="prompt-panel" aria-labelledby="promptLabel">
+            <div class="editor-title"><div><label id="promptLabel" for="prompt">提示词</label><span id="editingShot"></span></div><button id="example" class="outline"><svg><use href="#i-spark"/></svg> 填入示例</button></div>
+            <div class="editor"><textarea id="prompt" maxlength="2000" placeholder="写下本镜头的画面、人物动作、镜头运动和光线。输入 @ 或点击素材即可引用参考图。"></textarea><div class="editor-bottom"><span id="editorHint">输入 @ 选择素材 · 每个镜头独立保存</span><span id="promptCount">0 / 2000</span></div></div>
+            <div id="mentionPicker" class="mention-picker" hidden><label class="search-box"><svg><use href="#i-search"/></svg><input id="mentionSearch" placeholder="搜索并引用素材" aria-label="搜索可引用素材"></label><div id="mentionResults"></div></div>
+          </section>
+          <aside class="asset-panel" id="assetPanel" aria-labelledby="assetTitle">
+            <section class="media-section">
+              <div class="media-head"><h2 id="assetTitle">提示词可 @ 的素材</h2><span id="assetTotal"></span><button class="text-action" data-upload aria-label="上传素材"><svg><use href="#i-plus"/></svg></button><button class="icon-button asset-close" id="closeAssets" aria-label="关闭素材抽屉"><svg><use href="#i-close"/></svg></button></div>
+              <div class="media-box"><div class="folder-bar"><label><svg><use href="#i-folder"/></svg><select id="sideFolder" aria-label="素材文件夹"></select></label><button class="text-action" data-new-folder>新建文件夹</button></div><label class="search-box"><svg><use href="#i-search"/></svg><input id="assetSearch" placeholder="搜索素材" aria-label="搜索素材库"></label><div class="filter-row" id="assetFilters"></div><div id="sideBulk" class="bulk-bar"></div><div id="assetGrid" class="asset-grid"></div><button class="media-upload" id="dropzone" data-upload><svg><use href="#i-upload"/></svg> 上传或拖入图片</button></div>
+            </section>
+            <section class="media-section">
+              <div class="media-head"><h2>参考素材列表</h2><span id="refCount"></span></div>
+              <div class="media-box reference-box"><p id="referenceNote">已添加到当前镜头的参考图片。</p><div class="refs" id="refs"></div></div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+      <section class="view" id="assetsView" hidden><div class="page-title"><span>LIBRARY / 02</span><h1>素材资产库</h1><p>按剧建立文件夹，在不同镜头中复用角色、场景和道具。</p></div><div class="page-card"><div class="section-head"><div class="section-title"><span class="tile"><svg><use href="#i-image"/></svg></span><div><h2 id="libraryTitle">全部素材</h2><p id="libraryCount"></p></div></div><button class="primary" data-upload><svg><use href="#i-upload"/></svg> 上传素材</button></div><div class="library-tools"><div class="folder-bar"><label><svg><use href="#i-folder"/></svg><select id="libraryFolder" aria-label="资产文件夹"></select></label><button class="text-action" data-new-folder>新建文件夹</button></div><div class="filter-row" id="libraryFilters"></div><label class="search-box"><svg><use href="#i-search"/></svg><input id="librarySearch" placeholder="搜索素材" aria-label="搜索素材"></label></div><div class="library-bulk bulk-bar" id="libraryBulk"></div><div class="library" id="libraryGrid"></div></div></section>
+
+      <section class="view" id="queueView" hidden><div class="page-title"><span>RENDER QUEUE / 03</span><h1>生成队列</h1><p>查看生成状态、重试失败的镜头，或者下载完成的视频。</p></div><div class="queue-metrics" id="queueMetrics"></div><div class="page-card"><div class="section-head"><div class="section-title"><span class="tile"><svg><use href="#i-queue"/></svg></span><div><h2>任务记录</h2><p id="queueInfo"></p></div></div><button class="outline" id="refresh"><svg><use href="#i-retry"/></svg> 刷新</button></div><div class="filter-row queue-filters" id="queueFilters"></div><div id="jobList"></div></div></section>
+  </main>
+
+  <dialog id="importDialog"><form id="importForm"><div class="dialog-head"><h2>批量导入分镜</h2><button type="button" class="icon-button" data-close="importDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>每行一条，导入后可逐条调整参数和图片。</p><textarea id="importText" rows="6" aria-label="批量分镜" placeholder="例如：雨夜街道，镜头缓慢推向主角。"></textarea><p class="dialog-error" id="importError" hidden></p><button class="primary wide" type="submit">添加到剧本</button></form></dialog>
+  <dialog id="uploadDialog"><form id="uploadForm"><div class="dialog-head"><h2>上传素材</h2><button type="button" class="icon-button" data-close="uploadDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>支持 JPG、PNG、WEBP。每张最大 4 MB，可一次选择最多 20 张。</p><label class="file-pick"><svg><use href="#i-upload"/></svg><span id="pickedLabel">选择本地图片</span><input id="files" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><label class="field-label">存入文件夹<select id="uploadFolder"></select></label><label class="field-label">素材分类<select id="category"><option>角色</option><option selected>场景</option><option>道具</option><option>风格</option></select></label><label class="check-label"><input type="checkbox" id="attachUpload" checked> 上传后添加为当前参考图</label><p class="dialog-error" id="uploadError" hidden></p><button class="primary wide" type="submit" id="uploadSubmit"><svg><use href="#i-upload"/></svg> 上传到素材库</button></form></dialog>
+  <dialog id="folderDialog"><form id="folderForm"><div class="dialog-head"><h2>新建素材文件夹</h2><button type="button" class="icon-button" data-close="folderDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>建议用剧名命名，例如「春山有梦」。</p><label class="field-label">文件夹名称<input id="folderName" maxlength="60" required></label><p class="dialog-error" id="folderError" hidden></p><button class="primary wide" type="submit">创建文件夹</button></form></dialog>
+  <dialog id="moveDialog"><form id="moveForm"><div class="dialog-head"><h2>批量移动素材</h2><button type="button" class="icon-button" data-close="moveDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>移动不会影响镜头里已经引用的素材。</p><label class="field-label">目标文件夹<select id="moveFolder"></select></label><p class="dialog-error" id="moveError" hidden></p><button class="primary wide" type="submit">移动所选素材</button></form></dialog>
+
+  <dialog id="configDialog">
+    <div class="dialog-head"><h2>万相 3.0 接入</h2><button type="button" class="icon-button" data-close="configDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div>
+    <p id="configMessage"></p>
+    <div class="config-data"><div id="configAccount" hidden><span>登录账号</span><b id="accountEmail"></b></div><div><span>模型</span><b>wan3.0-video · 480P</b></div><div><span>每账号并发上限</span><b id="configLimit"></b></div></div>
+    <form id="configForm" method="post" autocomplete="off" hidden>
+      <label class="field-label">百炼 API Key<input id="providerKey" type="password" maxlength="512" autocomplete="new-password" spellcheck="false" required></label>
+      <label class="field-label">百炼业务空间 ID<input id="providerWorkspace" maxlength="63" placeholder="ws-…" spellcheck="false" required></label>
+      <label class="field-label">业务空间地域<select id="providerRegion"><option value="cn-beijing">中国大陆 · 北京</option><option value="ap-southeast-1">新加坡</option><option value="ap-northeast-1">日本 · 东京</option><option value="eu-central-1">德国 · 法兰克福</option><option value="us-east-1">美国 · 弗吉尼亚</option><option value="cn-hongkong">中国香港</option></select></label>
+      <p role="alert" class="dialog-error" id="configError" hidden></p>
+      <div class="config-actions"><button class="primary" type="submit" id="saveConfig">保存我的配置</button><button class="outline" type="button" id="removeConfig" hidden>移除我的 Key</button></div>
+    </form>
+    <p id="configQueue"></p><button class="outline wide" type="button" id="checkConfig">刷新接入状态</button>
+    <form id="signOut" action="/logout" method="post" hidden><button class="outline wide" type="submit">退出当前账号</button></form>
+  </dialog>
+
+  <dialog id="previewDialog"><div class="dialog-head"><h2 id="previewTitle">视频预览</h2><button type="button" class="icon-button" data-close="previewDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><video id="previewVideo" controls playsinline></video><a class="primary wide" id="previewDownload"><svg><use href="#i-down"/></svg> 下载视频</a></dialog>
+  <button id="overlay" class="overlay" type="button" hidden aria-label="关闭抽屉"></button><div class="toast" id="toast" aria-live="polite" hidden></div>
+</body>
+</html>
